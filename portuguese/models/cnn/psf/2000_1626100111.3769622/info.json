@@ -1,0 +1,52 @@
+{
+  "method": "CNN",
+  "language": "portuguese",
+  "seed": 42,
+  "library": "psf",
+  "sample_rate": 24000,
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 1.0,
+  "score_test": 0.20000000298023224,
+  "timestamp": 1626100111.3884237,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      279.431617975235
+    ],
+    "std_fit_time": [
+      3.665792145629303
+    ],
+    "mean_score_time": [
+      1.5515902837117512
+    ],
+    "std_score_time": [
+      0.6285218199984991
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.13846154510974884
+    ],
+    "split1_test_score": [
+      0.046875
+    ],
+    "split2_test_score": [
+      0.015625
+    ],
+    "mean_test_score": [
+      0.06698718170324962
+    ],
+    "std_test_score": [
+      0.052125355911003854
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}

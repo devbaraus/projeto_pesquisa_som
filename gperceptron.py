@@ -68,13 +68,15 @@ else:
     X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
         file_path, flat=False)
 
-#%%
+# %%
+
 
 def build_model():
     # build the network architecture
     model = keras.Sequential()
     if library != 'mixed':
-        model.add(keras.layers.Flatten(input_shape=(X_train.shape[1], X_train.shape[2])))
+        model.add(keras.layers.Flatten(
+            input_shape=(X_train.shape[1], X_train.shape[2])))
 
     model.add(keras.layers.Dense(512, activation='relu'))
     model.add(keras.layers.Dense(256, activation='relu'))
@@ -84,18 +86,19 @@ def build_model():
     optimizer = keras.optimizers.Adam(learning_rate=0.0001)
 
     model.compile(optimizer=optimizer,
-                    loss='sparse_categorical_crossentropy',
-                    metrics=['accuracy'])
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
 
     return model
 
+
 kc = KerasClassifier(build_fn=build_model,
-                        epochs=2000, batch_size=128, verbose=2)
+                     epochs=500, batch_size=128, verbose=2)
 
 param_grid = {}
 
 model = GridSearchCV(
-    estimator=kc, param_grid=param_grid, n_jobs=-1, cv=5)
+    estimator=kc, param_grid=param_grid, n_jobs=-1, cv=2)
 
 
 model.fit(X_train, y_train)
@@ -113,7 +116,7 @@ filename_ps = Directory.verify_people_segments(
 
 # SALVA ACURÁCIAS E PARAMETROS
 Model.dump_grid(
-    f'{language}/models/gperceptron/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
+    f'{language}/models/perceptron/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
     model=model,
     language=language,
     method='Perceptron',

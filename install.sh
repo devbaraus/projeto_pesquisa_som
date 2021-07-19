@@ -1,1 +1,1 @@
-pip install tensorflow tensorflow_addons sklearn matplotlib numpy gin gin-config python_speech_features librosa
+pip install tensorflow tensorflow_addons sklearn matplotlib numpy gin gin-config python_speech_features librosa lingvo

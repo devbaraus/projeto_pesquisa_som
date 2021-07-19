@@ -1,0 +1,52 @@
+{
+  "method": "CNN",
+  "language": "portuguese",
+  "seed": 42,
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 1.0,
+  "score_test": 0.26153847575187683,
+  "timestamp": 1626101374.6500387,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      108.44980033238728
+    ],
+    "std_fit_time": [
+      2.0778687558195035
+    ],
+    "mean_score_time": [
+      0.42317716280619305
+    ],
+    "std_score_time": [
+      0.14874461509001619
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.1230769231915474
+    ],
+    "split1_test_score": [
+      0.125
+    ],
+    "split2_test_score": [
+      0.0625
+    ],
+    "mean_test_score": [
+      0.10352564106384914
+    ],
+    "std_test_score": [
+      0.02902013065244699
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}

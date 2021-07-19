@@ -1,18 +1,22 @@
 #!/usr/bin/env python
 # coding: utf-8
 # %%
-from joblib import Parallel, delayed
-import numpy as np
-import multiprocessing
-from tensorflow import newaxis
-from scipy.signal.windows import hann
-from leaf_audio.frontend import MelFilterbanks
-from python_speech_features import mfcc
-from deep_audio import Directory, Audio, Process, Terminal
 import sys
+from python_speech_features import mfcc
+from scipy.signal.windows import hann
+from librosa import stft
+import multiprocessing
+import numpy as np
+from joblib import Parallel, delayed
+
+from deep_audio import Directory, Audio, Process, Terminal
+args = Terminal.get_args(sys.argv[1:])
+if 'melbanks' in args['representation'].split(','):
+    from leaf_audio.frontend import MelFilterbanks
+    from tensorflow import newaxis
 
 # %%
-args = Terminal.get_args(sys.argv[1:])
+
 
 # %%
 num_cores = multiprocessing.cpu_count()
@@ -71,6 +75,10 @@ def process_directory(dir, index, library):
         fmax = rate / 2
         coef_pre_enfase = 0.97
         append_energy = 0
+
+        if library == 'stft':
+            attr = np.abs(
+                np.array(stft(sample, n_fft=n_fft, hop_length=hop_length)))
 
         if library == 'melbanks':
             sample = sample[newaxis, :]
