@@ -1,18 +1,21 @@
 # %%
 from time import time
 from sklearn.model_selection import GridSearchCV
+from tensorflow.keras import layers
 from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow import keras
+from tensorflow.python.keras.layers import pooling
+from tensorflow.python.keras.layers.pooling import AveragePooling2D
 from deep_audio import Directory, Process, Terminal, Model
 from tensorflow.keras.layers.experimental import preprocessing
 import numpy as np
 # %%
 args = Terminal.get_args()
 
-language = args['language']
-library = args['representation']
-people = args['people']
-segments = args['segments']
+language = args['language'] or 'portuguese'
+library = args['representation'] or 'stft'
+people = args['people'] or None
+segments = args['segments'] or None
 sampling_rate = 24000
 random_state = 42
 
@@ -71,9 +74,11 @@ else:
         file_path, flat=False, squeeze=False)
 
 # %%
-X_train = X_train[..., np.newaxis]
-X_valid = X_valid[..., np.newaxis]
-X_test = X_test[..., np.newaxis]
+# X_train = X_train[..., np.newaxis]
+# X_valid = X_valid[..., np.newaxis]
+# X_test = X_test[..., np.newaxis]
+
+print(X_train.shape)
 
 
 def build_model():
@@ -85,6 +90,18 @@ def build_model():
     #     model.add(keras.layers.Flatten(
     #         input_shape=(X_train.shape[1], X_train.shape[2])))
 
+    # AISHELLL 1
+    model.add(keras.layers.Input(shape=input_shape))
+    model.add(keras.layers.Conv2D(
+        kernel_size=(5, 5), strides=(2, 2), filters=64))
+    model.add(keras.layers.AveragePooling2D(pool_size=(2, 2)))
+    model.add(keras.layers.SimpleRNN(1024))
+    model.add(keras.layers.SimpleRNN(1024))
+    model.add(keras.layers.SimpleRNN(1024))
+    model.add(keras.layers.average())
+    model.add(keras.layers.Dense(len(set(y_train)), activation='softmax'))
+
+    # VALERIO VELARDO
     # model.add(keras.layers.Conv2D(
     #     64, (3, 3), activation='relu', input_shape=input_shape))
     # model.add(keras.layers.MaxPool2D((3, 3), strides=(2, 2), padding='same'))
@@ -107,7 +124,7 @@ def build_model():
 
     # model.add(keras.layers.Dense(len(set(y_train)), activation='softmax'))
 
-    # DANIEL CNN
+    # DANIEL NOTEBOOK CNN
     # model.add(keras.layers.Conv1D(filters=20, kernel_size=4, strides=2, padding="valid",
     #                               input_shape=(X_train.shape[1], X_train.shape[2])))
     # model.add(keras.layers.GRU(20, return_sequences=True))
@@ -116,16 +133,16 @@ def build_model():
     #     keras.layers.Dense(len(set(y_train)))))
 
     # BIOMETRIA DE LA VOZ
-    model.add(keras.layers.Input(shape=input_shape))
-    model.add(preprocessing.Resizing(32, 32))
-    model.add(keras.layers.Conv2D(32, 3, activation='relu'))
-    model.add(keras.layers.Conv2D(64, 3, activation='relu'))
-    model.add(keras.layers.MaxPooling2D())
-    model.add(keras.layers.Dropout(0.25))
-    model.add(keras.layers.Flatten())
-    model.add(keras.layers.Dense(128, activation='relu'))
-    model.add(keras.layers.Dropout(0.5))
-    model.add(keras.layers.Dense(len(set(y_train)),  activation='softmax'))
+    # model.add(keras.layers.Input(shape=input_shape))
+    # model.add(preprocessing.Resizing(32, 32))
+    # model.add(keras.layers.Conv2D(32, 3, activation='relu'))
+    # model.add(keras.layers.Conv2D(64, 3, activation='relu'))
+    # model.add(keras.layers.MaxPooling2D())
+    # model.add(keras.layers.Dropout(0.25))
+    # model.add(keras.layers.Flatten())
+    # model.add(keras.layers.Dense(128, activation='relu'))
+    # model.add(keras.layers.Dropout(0.5))
+    # model.add(keras.layers.Dense(len(set(y_train)),  activation='softmax'))
 
     optimizer = keras.optimizers.Adam(learning_rate=0.0001)
 
@@ -137,7 +154,7 @@ def build_model():
 
 
 kc = KerasClassifier(build_fn=build_model,
-                     epochs=500, batch_size=128, verbose=0)
+                     epochs=400, batch_size=128, verbose=1)
 
 param_grid = {}
 
@@ -160,10 +177,10 @@ filename_ps = Directory.verify_people_segments(
 
 # SALVA ACURÁCIAS E PARAMETROS
 Model.dump_grid(
-    f'{language}/models/cnn/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
+    f'{language}/models/cnn/aishell/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
     model=model,
     language=language,
-    method='CNN',
+    method='CNN Aishel',
     sampling_rate=sampling_rate,
     seed=random_state,
     library=library,
