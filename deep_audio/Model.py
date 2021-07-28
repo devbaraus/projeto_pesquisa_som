@@ -13,7 +13,7 @@ def create_model_json_file(file, data):
 
 
 def dump_grid(file, model, language, method, seed, library, sizes, score_train, score_test, sampling_rate, score_valid=None,
-              model_file=None):
+              model_file=None, extra={}):
     from time import time
     from deep_audio import JSON
 
@@ -28,7 +28,8 @@ def dump_grid(file, model, language, method, seed, library, sizes, score_train, 
         'score_test': score_test,
         'timestamp': time(),
         'params': model.best_params_,
-        'cv_results': model.cv_results_
+        'cv_results': model.cv_results_,
+        **extra
     }
 
     if score_valid:
@@ -55,6 +56,3 @@ def load_processed_data(path, inputs_fieldname='mfcc'):
     mapping = data['mapping']
 
     return inputs, targets, mapping
-
-
-

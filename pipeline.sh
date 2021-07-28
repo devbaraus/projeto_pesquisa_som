@@ -40,12 +40,29 @@
 # python3 cnn.py -l portuguese -r stft
 # python3 cnn.py -l portuguese -r psf
 
-python3 process.py -l portuguese -r stft -n standard
-python3 process.py -l portuguese -r stft -n minmax
-python3 process.py -l portuguese -r melbanks -n standard
-python3 process.py -l portuguese -r melbanks -n minmax
+# python3 process.py -l english -r stft -n standard
+# python3 process.py -l english -r stft -n minmax
+# python3 process.py -l english -r melbanks -n standard
+# python3 process.py -l english -r melbanks -n minmax
 
+python3 gperceptron.py -l portuguese -r psf -n standard
+python3 gperceptron.py -l portuguese -r psf -n minmax
+python3 gperceptron.py -l portuguese -r melbanks -n standard
+python3 gperceptron.py -l portuguese -r melbanks -n minmax
+
+python3 cnn.py -l portuguese -r psf -n standard
+python3 cnn.py -l portuguese -r psf -n minmax
 python3 cnn.py -l portuguese -r melbanks -n standard
 python3 cnn.py -l portuguese -r melbanks -n minmax
-python3 cnn.py -l portuguese -r stft -n standard
-python3 cnn.py -l portuguese -r stft -n minmax
+
+python3 gperceptron.py -l english -r psf -n standard
+python3 gperceptron.py -l english -r psf -n minmax
+python3 gperceptron.py -l english -r melbanks -n standard
+python3 gperceptron.py -l english -r melbanks -n minmax
+
+python3 cnn.py -l english -r psf -n standard
+python3 cnn.py -l english -r psf -n minmax
+python3 cnn.py -l english -r melbanks -n standard
+python3 cnn.py -l english -r melbanks -n minmax
+
+

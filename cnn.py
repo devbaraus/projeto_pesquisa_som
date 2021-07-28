@@ -6,7 +6,7 @@ from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow import keras
 from tensorflow.python.keras.layers import pooling
 from tensorflow.python.keras.layers.pooling import AveragePooling2D
-from deep_audio import Directory, Process, Terminal, Model
+from deep_audio import Directory, JSON, Process, Terminal, Model
 from tensorflow.keras.layers.experimental import preprocessing
 import numpy as np
 # %%
@@ -19,18 +19,15 @@ segments = args['segments'] or None
 sampling_rate = 24000
 random_state = 42
 normalization = args['normalization'] or 'nonorm'
+flat = args['flat']
 
-# language = 'mixed'
-# library = 'psf'
-# people = None
-# segments = None
-# sampling_rate = 24000
-# random_state = 42
+epochs = 500
+batch_size = 128
 # %%
 global X_train, X_valid, X_test, y_train, y_valid, y_test
 
 file_path = Directory.processed_filename(
-    language, library, sampling_rate, normalization, people, segments)
+    language, library, sampling_rate, people, segments)
 # %%
 if language == 'mixed' and library == 'mixed':
     first_folder = Directory.processed_filename(
@@ -72,9 +69,27 @@ elif library == 'mixed':
         test=True)
 else:
     X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
-        file_path, flat=False, squeeze=False)
+        file_path, flat=flat)
 
 # %%
+if normalization == 'minmax':
+    from sklearn.preprocessing import MinMaxScaler
+
+    scaler = MinMaxScaler()
+    X_train = scaler.fit_transform(
+        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
+    X_test = scaler.transform(
+        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
+
+elif normalization == 'standard':
+    from sklearn.preprocessing import StandardScaler
+
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(
+        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
+    X_test = scaler.transform(
+        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
+
 X_train = X_train[..., np.newaxis]
 X_valid = X_valid[..., np.newaxis]
 X_test = X_test[..., np.newaxis]
@@ -84,9 +99,11 @@ print(X_train.shape)
 
 def build_model():
     # build the network architecture
-    input_shape = (X_train.shape[1], X_train.shape[2], X_train.shape[3])
 
     model = keras.Sequential()
+
+    input_shape = (X_train.shape[1], X_train.shape[2], X_train.shape[3])
+
     # if library != 'mixed':
     #     model.add(keras.layers.Flatten(
     #         input_shape=(X_train.shape[1], X_train.shape[2])))
@@ -155,12 +172,12 @@ def build_model():
 
 
 kc = KerasClassifier(build_fn=build_model,
-                     epochs=400, batch_size=128, verbose=1)
+                     epochs=epochs, batch_size=batch_size, verbose=1)
 
 param_grid = {}
 
 model = GridSearchCV(
-    estimator=kc, param_grid=param_grid, n_jobs=-1, cv=2)
+    estimator=kc, param_grid=param_grid, n_jobs=-1, cv=5)
 
 
 model.fit(X_train, y_train)
@@ -173,8 +190,13 @@ score_train = model.score(X_train, y_train)
 
 y_hat = model.predict(X_test)
 
-filename_ps = Directory.verify_people_segments(
-    people=people, segments=segments)
+filename_model = Directory.model_filename(
+    'cnn', language, library, normalization, score_test, json=False)+'model.json'
+
+JSON.create_json_file(
+    file=filename_model,
+    data=build_model().to_json()
+)
 
 # SALVA ACURÁCIAS E PARAMETROS
 Model.dump_grid(
@@ -182,11 +204,16 @@ Model.dump_grid(
         'cnn', language, library, normalization, score_test),
     model=model,
     language=language,
-    method='CNN Aishel',
+    method='CNN',
     sampling_rate=sampling_rate,
     seed=random_state,
     library=library,
     sizes=[len(X_train), len(X_valid), len(X_test)],
     score_train=score_train,
     score_test=score_test,
+    model_file=filename_model,
+    extra={
+        'epochs': epochs,
+        'batch_size': batch_size
+    }
 )

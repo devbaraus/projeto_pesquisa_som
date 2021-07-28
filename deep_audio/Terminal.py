@@ -6,12 +6,13 @@ def get_args(argv=sys.argv[1:]):
     language = ''
     representation = ''
     model = ''
-    normalization = ''
+    normalization = 'nonorm'
+    flat = False
     people = None
     segments = None
     try:
-        opts, args = getopt.getopt(argv, "h:l:r:p:s:m:n:", [
-                                   "language=", "representation=", "people=", "segments=", "model=", "normalization="])
+        opts, args = getopt.getopt(argv, "h:l:r:p:s:m:n:f:", [
+                                   "language=", "representation=", "people=", "segments=", "model=", "normalization=", "flat="])
     except getopt.GetoptError:
         print('test.py -l <language> -r <representation> -p <people> -s <segments>')
         sys.exit(2)
@@ -31,6 +32,8 @@ def get_args(argv=sys.argv[1:]):
             model = arg
         elif opt in ("-n", "--normalization"):
             normalization = arg
+        elif opt in ("-f", "--flat"):
+            flat = bool(arg)
 
     args = {
         'language': language,
@@ -38,7 +41,8 @@ def get_args(argv=sys.argv[1:]):
         'people': people,
         'segments': segments,
         'model': model,
-        'normalization': normalization
+        'normalization': normalization,
+        'flat': flat
     }
 
     print('ARGS:', args)

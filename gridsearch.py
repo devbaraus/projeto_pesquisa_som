@@ -70,20 +70,24 @@ else:
 if normalization == 'minmax':
     from sklearn.preprocessing import MinMaxScaler
 
-    scaler = MinMaxScaler()
-    X_train = scaler.fit_transform(
-        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
-    X_test = scaler.transform(
-        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
+    train_scaler = MinMaxScaler()
+    train_scaler.fit(X_train)
+    X_train = train_scaler.transform(X_train)
 
-elif normalization == 'standard':
+    test_scaler = MinMaxScaler()
+    test_scaler.fit(X_test)
+    X_test = test_scaler.transform(X_test)
+
+if normalization == 'standard':
     from sklearn.preprocessing import StandardScaler
 
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(
-        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
-    X_test = scaler.transform(
-        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
+    train_scaler = StandardScaler()
+    train_scaler.fit(X_train)
+    X_train = train_scaler.transform(X_train)
+
+    test_scaler = StandardScaler()
+    test_scaler.fit(X_test)
+    X_test = test_scaler.transform(X_test)
 
 
 def build_model():

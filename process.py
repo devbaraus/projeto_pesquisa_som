@@ -32,6 +32,8 @@ libraries = args['representation'].split(',') or ['melbanks', 'psf']
 language = args['language'] or 'portuguese'
 # normalização do sinal
 normalization = args['normalization'] or 'nonorm'
+# flat processing
+flat = args['flat']
 # caminho para os audios
 path = f'{language}/audios/{sampling_rate}'
 
@@ -106,12 +108,6 @@ def process_directory(dir, index, library):
             )
             attr = np.array(attr)
 
-        if normalization == 'minmax':
-            attr = (attr - np.min(attr)) / (np.max(attr) - np.min(attr))
-
-        if normalization == 'standard':
-            attr = (attr - np.mean(attr)) / np.std(attr)
-
         m['attrs'].append(attr.tolist())
 
         del attr
@@ -139,6 +135,7 @@ if __name__ == '__main__':
             for j, i in enumerate(f)
             if n_audios == None or j < n_audios
         )
+
         Process.object_to_json(
             filename,
             m,

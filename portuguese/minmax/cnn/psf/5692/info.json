@@ -1,0 +1,51 @@
+{
+  "method": "CNN",
+  "language": "portuguese",
+  "seed": 42,
+  "library": "psf",
+  "sample_rate": 24000,
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 1.0,
+  "score_test": 0.5692307949066162,
+  "timestamp": 1627513037.1133742,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      86.47204232215881
+    ],
+    "std_fit_time": [
+      0.08086323738098145
+    ],
+    "mean_score_time": [
+      0.20152759552001953
+    ],
+    "std_score_time": [
+      0.025810718536376953
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.1649484485387802
+    ],
+    "split1_test_score": [
+      0.15625
+    ],
+    "mean_test_score": [
+      0.1605992242693901
+    ],
+    "std_test_score": [
+      0.004349224269390106
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "portuguese/minmax/cnn/psf/5692/model.json"
+}

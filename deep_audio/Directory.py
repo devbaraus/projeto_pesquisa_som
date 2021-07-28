@@ -58,27 +58,31 @@ def load_json_data(path, inputs_fieldname='attrs'):
         return inputs, labels, mapping
 
 
-def processed_filename(language, library, rate, normalization, n_people=None, n_segments=None):
+def processed_filename(language, library, rate, n_people=None, n_segments=None, json=True):
     filename = f'{language}/'
-    filename += f'{normalization}/'
     filename += 'processed/'
+    # filename += f'{normalization}/'
     filename = verify_people_segments(filename, n_people, n_segments)
-    filename += f'{library}_{rate}.json'
+
+    if json:
+        filename += f'{library}_{rate}.json'
 
     return filename
 
 
-def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None):
+def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None, json=True):
     accuracy = Process.pad_accuracy(accuracy)
 
     filename = f'{language}/'
     filename += f'{normalization}/'
-    filename += 'models/'
+    # filename += 'models/'
     filename = verify_people_segments(filename, n_people, n_segments)
     filename += f'{model}/'
     filename += f'{library}/'
     filename += f'{accuracy}/'
-    filename += f'info.json'
+
+    if json:
+        filename += f'info.json'
 
     return filename
 
