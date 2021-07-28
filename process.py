@@ -30,6 +30,8 @@ n_audios = args['people'] or None
 libraries = args['representation'].split(',') or ['melbanks', 'psf']
 # lingua
 language = args['language'] or 'portuguese'
+# normalização do sinal
+normalization = args['normalization'] or 'nonorm'
 # caminho para os audios
 path = f'{language}/audios/{sampling_rate}'
 
@@ -104,6 +106,12 @@ def process_directory(dir, index, library):
             )
             attr = np.array(attr)
 
+        if normalization == 'minmax':
+            attr = (attr - np.min(attr)) / (np.max(attr) - np.min(attr))
+
+        if normalization == 'standard':
+            attr = (attr - np.mean(attr)) / np.std(attr)
+
         m['attrs'].append(attr.tolist())
 
         del attr
@@ -123,7 +131,7 @@ if __name__ == '__main__':
 
     for library in libraries:
         filename = Directory.processed_filename(
-            language, library, sampling_rate, n_audios, n_segments)
+            language, library, sampling_rate, normalization, n_audios, n_segments)
 
         m = Parallel(n_jobs=num_cores, verbose=len(f))(
             delayed(process_directory)

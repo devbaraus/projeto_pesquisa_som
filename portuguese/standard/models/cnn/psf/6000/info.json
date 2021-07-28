@@ -1,5 +1,5 @@
 {
-  "method": "CNN",
+  "method": "CNN Aishel",
   "language": "portuguese",
   "seed": 42,
   "library": "psf",
@@ -10,39 +10,36 @@
     65
   ],
   "score_train": 1.0,
-  "score_test": 0.20000000298023224,
-  "timestamp": 1626100111.3884237,
+  "score_test": 0.6000000238418579,
+  "timestamp": 1627496008.1523726,
   "params": {},
   "cv_results": {
     "mean_fit_time": [
-      279.431617975235
+      119.698903799057
     ],
     "std_fit_time": [
-      3.665792145629303
+      0.3632185459136963
     ],
     "mean_score_time": [
-      1.5515902837117512
+      0.447528600692749
     ],
     "std_score_time": [
-      0.6285218199984991
+      0.19400954246520996
     ],
     "params": [
       {}
     ],
     "split0_test_score": [
-      0.13846154510974884
+      0.2164948433637619
     ],
     "split1_test_score": [
-      0.046875
-    ],
-    "split2_test_score": [
-      0.015625
+      0.28125
     ],
     "mean_test_score": [
-      0.06698718170324962
+      0.24887242168188095
     ],
     "std_test_score": [
-      0.052125355911003854
+      0.03237757831811905
     ],
     "rank_test_score": [
       1

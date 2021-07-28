@@ -18,6 +18,7 @@ people = args['people'] or None
 segments = args['segments'] or None
 sampling_rate = 24000
 random_state = 42
+normalization = args['normalization'] or 'nonorm'
 
 # language = 'mixed'
 # library = 'psf'
@@ -29,7 +30,7 @@ random_state = 42
 global X_train, X_valid, X_test, y_train, y_valid, y_test
 
 file_path = Directory.processed_filename(
-    language, library, sampling_rate, people, segments)
+    language, library, sampling_rate, normalization, people, segments)
 # %%
 if language == 'mixed' and library == 'mixed':
     first_folder = Directory.processed_filename(
@@ -74,9 +75,9 @@ else:
         file_path, flat=False, squeeze=False)
 
 # %%
-# X_train = X_train[..., np.newaxis]
-# X_valid = X_valid[..., np.newaxis]
-# X_test = X_test[..., np.newaxis]
+X_train = X_train[..., np.newaxis]
+X_valid = X_valid[..., np.newaxis]
+X_test = X_test[..., np.newaxis]
 
 print(X_train.shape)
 
@@ -91,15 +92,15 @@ def build_model():
     #         input_shape=(X_train.shape[1], X_train.shape[2])))
 
     # AISHELLL 1
-    model.add(keras.layers.Input(shape=input_shape))
-    model.add(keras.layers.Conv2D(
-        kernel_size=(5, 5), strides=(2, 2), filters=64))
-    model.add(keras.layers.AveragePooling2D(pool_size=(2, 2)))
-    model.add(keras.layers.SimpleRNN(1024))
-    model.add(keras.layers.SimpleRNN(1024))
-    model.add(keras.layers.SimpleRNN(1024))
-    model.add(keras.layers.average())
-    model.add(keras.layers.Dense(len(set(y_train)), activation='softmax'))
+    # model.add(keras.layers.Input(shape=input_shape))
+    # model.add(keras.layers.Conv2D(
+    #     kernel_size=(5, 5), strides=(2, 2), filters=64))
+    # model.add(keras.layers.AveragePooling2D(pool_size=(2, 2)))
+    # model.add(keras.layers.SimpleRNN(1024))
+    # model.add(keras.layers.SimpleRNN(1024))
+    # model.add(keras.layers.SimpleRNN(1024))
+    # model.add(keras.layers.average())
+    # model.add(keras.layers.Dense(len(set(y_train)), activation='softmax'))
 
     # VALERIO VELARDO
     # model.add(keras.layers.Conv2D(
@@ -133,16 +134,16 @@ def build_model():
     #     keras.layers.Dense(len(set(y_train)))))
 
     # BIOMETRIA DE LA VOZ
-    # model.add(keras.layers.Input(shape=input_shape))
-    # model.add(preprocessing.Resizing(32, 32))
-    # model.add(keras.layers.Conv2D(32, 3, activation='relu'))
-    # model.add(keras.layers.Conv2D(64, 3, activation='relu'))
-    # model.add(keras.layers.MaxPooling2D())
-    # model.add(keras.layers.Dropout(0.25))
-    # model.add(keras.layers.Flatten())
-    # model.add(keras.layers.Dense(128, activation='relu'))
-    # model.add(keras.layers.Dropout(0.5))
-    # model.add(keras.layers.Dense(len(set(y_train)),  activation='softmax'))
+    model.add(keras.layers.Input(shape=input_shape))
+    model.add(preprocessing.Resizing(32, 32))
+    model.add(keras.layers.Conv2D(32, 3, activation='relu'))
+    model.add(keras.layers.Conv2D(64, 3, activation='relu'))
+    model.add(keras.layers.MaxPooling2D())
+    model.add(keras.layers.Dropout(0.25))
+    model.add(keras.layers.Flatten())
+    model.add(keras.layers.Dense(128, activation='relu'))
+    model.add(keras.layers.Dropout(0.5))
+    model.add(keras.layers.Dense(len(set(y_train)),  activation='softmax'))
 
     optimizer = keras.optimizers.Adam(learning_rate=0.0001)
 
@@ -177,7 +178,8 @@ filename_ps = Directory.verify_people_segments(
 
 # SALVA ACURÁCIAS E PARAMETROS
 Model.dump_grid(
-    f'{language}/models/cnn/aishell/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
+    Directory.model_filename(
+        'cnn', language, library, normalization, score_test),
     model=model,
     language=language,
     method='CNN Aishel',
@@ -187,6 +189,4 @@ Model.dump_grid(
     sizes=[len(X_train), len(X_valid), len(X_test)],
     score_train=score_train,
     score_test=score_test,
-
-
 )

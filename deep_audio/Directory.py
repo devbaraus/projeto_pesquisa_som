@@ -1,3 +1,6 @@
+from deep_audio import Process
+
+
 def create_directory(directory, file=False):
     from os import makedirs
 
@@ -55,11 +58,27 @@ def load_json_data(path, inputs_fieldname='attrs'):
         return inputs, labels, mapping
 
 
-def processed_filename(language, library, rate, n_people=None, n_segments=None):
-    filename = f'{language}'
-    filename += '/processed/'
+def processed_filename(language, library, rate, normalization, n_people=None, n_segments=None):
+    filename = f'{language}/'
+    filename += f'{normalization}/'
+    filename += 'processed/'
     filename = verify_people_segments(filename, n_people, n_segments)
     filename += f'{library}_{rate}.json'
+
+    return filename
+
+
+def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None):
+    accuracy = Process.pad_accuracy(accuracy)
+
+    filename = f'{language}/'
+    filename += f'{normalization}/'
+    filename += 'models/'
+    filename = verify_people_segments(filename, n_people, n_segments)
+    filename += f'{library}/'
+    filename += f'{model}/'
+    filename += f'{accuracy}/'
+    filename += f'info.json'
 
     return filename
 
