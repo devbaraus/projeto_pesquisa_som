@@ -75,8 +75,8 @@ def model_filename(model, language, library, normalization, accuracy, n_people=N
     filename += f'{normalization}/'
     filename += 'models/'
     filename = verify_people_segments(filename, n_people, n_segments)
-    filename += f'{library}/'
     filename += f'{model}/'
+    filename += f'{library}/'
     filename += f'{accuracy}/'
     filename += f'info.json'
 
