@@ -127,7 +127,9 @@ base_portuguese/
 # Processed folders
 english/audios/
 english/*/processed/
+english/processed/
 portuguese/audios/
 portuguese/*/processed/
+portuguese/processed/
 
 /**/*.h5
