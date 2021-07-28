@@ -1,0 +1,49 @@
+{
+  "method": "LSTM",
+  "language": "portuguese",
+  "seed": 42,
+  "library": "psf",
+  "sample_rate": 24000,
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 0.14507772028446198,
+  "score_test": 0.07692307978868484,
+  "timestamp": 1627310896.7617543,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      608.847570180893
+    ],
+    "std_fit_time": [
+      16.791900873184204
+    ],
+    "mean_score_time": [
+      2.421905994415283
+    ],
+    "std_score_time": [
+      1.1038062572479248
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.030927835032343864
+    ],
+    "split1_test_score": [
+      0.03125
+    ],
+    "mean_test_score": [
+      0.031088917516171932
+    ],
+    "std_test_score": [
+      0.00016108248382806778
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}
