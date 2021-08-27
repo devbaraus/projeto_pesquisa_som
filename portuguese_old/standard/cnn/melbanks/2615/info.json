@@ -1,0 +1,67 @@
+{
+  "method": "cnn",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    193,
+    40,
+    500,
+    1
+  ],
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 1.0,
+  "score_test": 0.26153847575187683,
+  "timestamp": 1627690204.169106,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      342.9615263938904
+    ],
+    "std_fit_time": [
+      0.9780851266533347
+    ],
+    "mean_score_time": [
+      0.34354367256164553
+    ],
+    "std_score_time": [
+      0.18890972768215147
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.07692307978868484
+    ],
+    "split1_test_score": [
+      0.23076923191547394
+    ],
+    "split2_test_score": [
+      0.05128205195069313
+    ],
+    "split3_test_score": [
+      0.21052631735801697
+    ],
+    "split4_test_score": [
+      0.07894736528396606
+    ],
+    "mean_test_score": [
+      0.12968960925936698
+    ],
+    "std_test_score": [
+      0.0751777766253828
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/cnn/melbanks/2615/model.json"
+}

@@ -1,0 +1,66 @@
+{
+  "method": "lstm",
+  "language": "english",
+  "normalization": "standard",
+  "seed": 42,
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    10601,
+    40,
+    500
+  ],
+  "sizes": [
+    10601,
+    3534,
+    3534
+  ],
+  "score_train": 0.4736345708370209,
+  "score_test": 0.058007922023534775,
+  "timestamp": 1627940722.6471984,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      5051.220572376251
+    ],
+    "std_fit_time": [
+      22.535722826316515
+    ],
+    "mean_score_time": [
+      2.51792254447937
+    ],
+    "std_score_time": [
+      1.4765182566456834
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.046204619109630585
+    ],
+    "split1_test_score": [
+      0.031132075935602188
+    ],
+    "split2_test_score": [
+      0.03207547217607498
+    ],
+    "split3_test_score": [
+      0.06037735939025879
+    ],
+    "split4_test_score": [
+      0.04528301954269409
+    ],
+    "mean_test_score": [
+      0.04301450923085213
+    ],
+    "std_test_score": [
+      0.010748453455576509
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "english/standard/lstm/melbanks/0580/model.json"
+}

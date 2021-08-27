@@ -1,0 +1,71 @@
+{
+  "method": "perceptron",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "15",
+    "noise",
+    "cut"
+  ],
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    7065,
+    40,
+    500
+  ],
+  "sizes": [
+    7065,
+    2355,
+    2356
+  ],
+  "score_train": 1.0,
+  "score_test": 0.9741086363792419,
+  "timestamp": 1630024173.7380328,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      16365.043467950822
+    ],
+    "std_fit_time": [
+      40.58962541517659
+    ],
+    "mean_score_time": [
+      1.1184616565704346
+    ],
+    "std_score_time": [
+      0.5732013862202884
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.9532908797264099
+    ],
+    "split1_test_score": [
+      0.9518754482269287
+    ],
+    "split2_test_score": [
+      0.9610757231712341
+    ],
+    "split3_test_score": [
+      0.9596602916717529
+    ],
+    "split4_test_score": [
+      0.9497522711753845
+    ],
+    "mean_test_score": [
+      0.9551309227943421
+    ],
+    "std_test_score": [
+      0.0044445382288329826
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/a15nc/perceptron/melbanks/9741/model.json"
+}

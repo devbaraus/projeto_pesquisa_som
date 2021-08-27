@@ -2,6 +2,7 @@
   "method": "CNN",
   "language": "english",
   "seed": 42,
+  "normalization": "nonorm",
   "library": "psf",
   "sample_rate": 24000,
   "sizes": [

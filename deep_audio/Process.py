@@ -5,14 +5,16 @@ def object_to_json(filename, attrs, files):
     from deep_audio import JSON
 
     data = {
+        'mapping': [file.replace('.wav', '') for _, file in enumerate(files)],
+        'classes': [],
         'labels': [],
-        'attrs': [],
-        'mapping': [file.replace('.wav', '') for _, file in enumerate(files)]
+        'attrs': []
     }
 
     for i in attrs:
         data['attrs'].extend(i['attrs'])
         data['labels'].extend(i['labels'])
+        data['classes'].extend(i['classes'])
 
     JSON.create_json_file(filename, data, cls=JSON.NumpyEncoder)
 
@@ -40,7 +42,7 @@ def object_to_attention(filename, attrs, files):
             row += f'{j}:{info_attr} '
         rows.append(row)
 
-    Directory.create_file(filename, rows )
+    Directory.create_file(filename, rows)
     del data
 
 
@@ -92,7 +94,7 @@ def selection(folder, valid_size=0.25, test_size=0.2, random_state=42, flat=Fals
     return X_train, X_valid, X_test, y_train, y_valid, y_test
 
 
-def mixed_selection(first_folder, second_folder, third_folder, fourth_folder, lm_validation=False, lm_test=False,rm_validation=False, rm_test=False,
+def mixed_selection(first_folder, second_folder, third_folder, fourth_folder, lm_validation=False, lm_test=False, rm_validation=False, rm_test=False,
                     valid_size=0.25,
                     test_size=0.2,
                     random_state=42):
@@ -190,21 +192,24 @@ def mixed_selection(first_folder, second_folder, third_folder, fourth_folder, lm
         X_test_third = concatenate((X_test_third, X_test_fourth), axis=1)
 
     X_train = concatenate((X_train_first, X_train_third), axis=0)
-    y_train = concatenate((y_train_first, y_train_third + np.max(y_train_first) + 1), axis=0)
+    y_train = concatenate(
+        (y_train_first, y_train_third + np.max(y_train_first) + 1), axis=0)
 
     if not lm_validation:
         X_valid = X_valid_first
         y_valid = y_valid_first
     else:
         X_valid = concatenate((X_valid_first, X_valid_third), axis=0)
-        y_valid = concatenate((y_valid_first, y_valid_third + np.max(y_valid_first) + 1) , axis=0)
+        y_valid = concatenate(
+            (y_valid_first, y_valid_third + np.max(y_valid_first) + 1), axis=0)
 
     if not lm_test:
         X_test = X_test_first
         y_test = y_test_first
     else:
         X_test = concatenate((X_test_first, X_test_third), axis=0)
-        y_test = concatenate((y_test_first, y_test_third + np.max(y_test_first) + 1), axis=0)
+        y_test = concatenate(
+            (y_test_first, y_test_third + np.max(y_test_first) + 1), axis=0)
 
     return X_train, X_valid, X_test, y_train, y_valid, y_test
 
@@ -313,20 +318,23 @@ def mixed_selection_language(portuguese_folder, english_folder, validation=False
                                                                       random_state=random_state)
 
     X_train = concatenate((X_train_pt, X_train_en), axis=0)
-    y_train = concatenate((y_train_pt, y_train_en + max(y_train_pt) + 1), axis=0)
+    y_train = concatenate(
+        (y_train_pt, y_train_en + max(y_train_pt) + 1), axis=0)
 
     if not validation:
         X_valid = X_valid_pt
         y_valid = y_valid_pt
     else:
         X_valid = concatenate((X_valid_pt, X_valid_en), axis=0)
-        y_valid = concatenate((y_valid_pt, y_valid_en + max(y_valid_pt) + 1), axis=0)
+        y_valid = concatenate(
+            (y_valid_pt, y_valid_en + max(y_valid_pt) + 1), axis=0)
 
     if not test:
         X_test = X_test_pt
         y_test = y_test_pt
     else:
         X_test = concatenate((X_test_pt, X_test_en), axis=0)
-        y_test = concatenate((y_test_pt, y_test_en + max(y_test_pt) + 1), axis=0)
+        y_test = concatenate(
+            (y_test_pt, y_test_en + max(y_test_pt) + 1), axis=0)
 
     return X_train, X_valid, X_test, y_train, y_valid, y_test

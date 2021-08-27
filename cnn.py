@@ -90,6 +90,7 @@ elif normalization == 'standard':
     X_test = scaler.transform(
         X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
 
+
 X_train = X_train[..., np.newaxis]
 X_valid = X_valid[..., np.newaxis]
 X_test = X_test[..., np.newaxis]
@@ -205,6 +206,7 @@ Model.dump_grid(
     model=model,
     language=language,
     method='CNN',
+    normalization=normalization,
     sampling_rate=sampling_rate,
     seed=random_state,
     library=library,
@@ -214,6 +216,6 @@ Model.dump_grid(
     model_file=filename_model,
     extra={
         'epochs': epochs,
-        'batch_size': batch_size
+        'batch_size': batch_size,
     }
 )

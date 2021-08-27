@@ -10,6 +10,8 @@ language = args['language']
 library = args['representation']
 people = args['people']
 segments = args['segments']
+normalization = args['normalization']
+augment = args['augmentation']
 sampling_rate = 24000
 random_state = 42
 # %%
@@ -18,48 +20,27 @@ global X_train, X_valid, X_test, y_train, y_valid, y_test
 file_path = Directory.processed_filename(
     language, library, sampling_rate, people, segments)
 # %%
-if language == 'mixed' and library == 'mixed':
-    first_folder = Directory.processed_filename(
-        'portuguese', 'psf', sampling_rate, None, None)
-    second_folder = Directory.processed_filename(
-        'portuguese', 'melbanks', sampling_rate, None, None)
-    third_folder = Directory.processed_filename(
-        'english', 'psf', sampling_rate, people, segments)
-    fourth_folder = Directory.processed_filename(
-        'english', 'melbanks', sampling_rate, people, segments)
 
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection(
-        first_folder, second_folder, third_folder, fourth_folder,
-        lm_validation=False,
-        lm_test=False,
-        rm_validation=True,
-        rm_test=True
-    )
-elif language == 'mixed':
-    portuguese_folder = Directory.processed_filename(
-        'portuguese', library, sampling_rate, people, segments)
-    english_folder = Directory.processed_filename(
-        'english', library, sampling_rate, people, segments)
+X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
+    file_path, flat=True)
 
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection_language(
-        portuguese_folder=portuguese_folder,
-        english_folder=english_folder,
-        flat=True
-    )
-elif library == 'mixed':
-    first_folder = Directory.processed_filename(
-        language, 'psf', sampling_rate, people, segments)
-    second_folder = Directory.processed_filename(
-        language, 'melbanks', sampling_rate, people, segments)
+if normalization == 'minmax':
+    from sklearn.preprocessing import MinMaxScaler
 
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection_representation(
-        first_folder,
-        second_folder,
-        test=True)
-else:
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
-        file_path, flat=True)
+    scaler = MinMaxScaler()
+    X_train = scaler.fit_transform(
+        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
+    X_test = scaler.transform(
+        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
 
+elif normalization == 'standard':
+    from sklearn.preprocessing import StandardScaler
+
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(
+        X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
+    X_test = scaler.transform(
+        X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
 
 param_grid = {
     'C': [10],
@@ -85,11 +66,15 @@ filename_ps = Directory.verify_people_segments(
 
 # SALVA ACURÁCIAS E PARAMETROS
 Model.dump_grid(
-    f'{language}/models/svm/{library}/{filename_ps}{Process.pad_accuracy(score_test)}_{abs(time())}/info.json',
+    Directory.model_filename(
+        'svm', language, library, normalization, score_test, augmentation=augment),
     model=model,
     language=language,
     method='Support Vector Machines',
+    normalization=normalization,
     sampling_rate=sampling_rate,
+    augmentation=augment,
+    shape=X_train.shape,
     seed=random_state,
     library=library,
     sizes=[len(X_train), len(X_valid), len(X_test)],

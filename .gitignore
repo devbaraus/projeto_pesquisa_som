@@ -123,6 +123,7 @@ audios_pt/
 audios_en/
 base_english/
 base_portuguese/
+base_portuguese_old/
 
 # Processed folders
 english/audios/
@@ -131,5 +132,8 @@ english/processed/
 portuguese/audios/
 portuguese/*/processed/
 portuguese/processed/
+portuguese_old/audios/
+portuguese_old/*/processed/
+portuguese_old/processed/
 
 /**/*.h5

@@ -1,0 +1,66 @@
+{
+  "method": "lstm",
+  "language": "english",
+  "normalization": "nonorm",
+  "seed": 42,
+  "library": "psf",
+  "sample_rate": 24000,
+  "shape": [
+    10601,
+    234,
+    13
+  ],
+  "sizes": [
+    10601,
+    3534,
+    3534
+  ],
+  "score_train": 0.80464106798172,
+  "score_test": 0.7362761497497559,
+  "timestamp": 1627788670.6267307,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      13927.630207967759
+    ],
+    "std_fit_time": [
+      34.70174894334026
+    ],
+    "mean_score_time": [
+      2.7440503597259522
+    ],
+    "std_score_time": [
+      0.8759550947650235
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.6591230630874634
+    ],
+    "split1_test_score": [
+      0.6599056720733643
+    ],
+    "split2_test_score": [
+      0.6632075309753418
+    ],
+    "split3_test_score": [
+      0.7235848903656006
+    ],
+    "split4_test_score": [
+      0.6976414918899536
+    ],
+    "mean_test_score": [
+      0.6806925296783447
+    ],
+    "std_test_score": [
+      0.025807295259771382
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "english/nonorm/lstm/psf/7362/model.json"
+}

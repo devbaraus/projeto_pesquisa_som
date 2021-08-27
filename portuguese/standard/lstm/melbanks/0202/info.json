@@ -1,0 +1,109 @@
+{
+  "method": "lstm",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [],
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    441,
+    40,
+    500
+  ],
+  "sizes": [
+    441,
+    147,
+    148
+  ],
+  "score_train": 1.0,
+  "score_test": 0.020270269364118576,
+  "timestamp": 1629928519.5949259,
+  "params": {
+    "dense1": 64,
+    "dense2": 32,
+    "dense3": 24,
+    "dropout1": 0.2,
+    "dropout2": 0.2,
+    "dropout3": 0.4,
+    "epochs": 2000,
+    "lstm": 96
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      1136.476466178894
+    ],
+    "std_fit_time": [
+      1.5978365286400464
+    ],
+    "mean_score_time": [
+      1.3351241111755372
+    ],
+    "std_score_time": [
+      0.9519950194012735
+    ],
+    "param_dense1": [
+      64
+    ],
+    "param_dense2": [
+      32
+    ],
+    "param_dense3": [
+      24
+    ],
+    "param_dropout1": [
+      0.2
+    ],
+    "param_dropout2": [
+      0.2
+    ],
+    "param_dropout3": [
+      0.4
+    ],
+    "param_epochs": [
+      2000
+    ],
+    "param_lstm": [
+      96
+    ],
+    "params": [
+      {
+        "dense1": 64,
+        "dense2": 32,
+        "dense3": 24,
+        "dropout1": 0.2,
+        "dropout2": 0.2,
+        "dropout3": 0.4,
+        "epochs": 2000,
+        "lstm": 96
+      }
+    ],
+    "split0_test_score": [
+      0.02247191034257412
+    ],
+    "split1_test_score": [
+      0.022727273404598236
+    ],
+    "split2_test_score": [
+      0.034090910106897354
+    ],
+    "split3_test_score": [
+      0.011363636702299118
+    ],
+    "split4_test_score": [
+      0.011363636702299118
+    ],
+    "mean_test_score": [
+      0.02040347345173359
+    ],
+    "std_test_score": [
+      0.00849072077616849
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/lstm/melbanks/0202/model.json"
+}

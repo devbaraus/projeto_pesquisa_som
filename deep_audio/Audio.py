@@ -62,7 +62,7 @@ def unnormalize(data):
 
 def segment(signal, rate, seconds, window=0):
     start_sample = rate * window * seconds
-    finish_sample = start_sample + (rate * 5)
+    finish_sample = start_sample + (rate * seconds)
 
     return signal[start_sample:finish_sample]
 

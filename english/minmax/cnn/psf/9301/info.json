@@ -1,0 +1,61 @@
+{
+  "method": "CNN",
+  "language": "english",
+  "seed": 42,
+  "normalization": "minmax",
+  "library": "psf",
+  "sample_rate": 24000,
+  "sizes": [
+    10601,
+    3534,
+    3534
+  ],
+  "score_train": 0.9923592209815979,
+  "score_test": 0.9301075339317322,
+  "timestamp": 1627586036.864262,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      18377.21708483696
+    ],
+    "std_fit_time": [
+      32.05554461306846
+    ],
+    "mean_score_time": [
+      1.59670090675354
+    ],
+    "std_score_time": [
+      0.6769651223974635
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.909476637840271
+    ],
+    "split1_test_score": [
+      0.921226441860199
+    ],
+    "split2_test_score": [
+      0.9160377383232117
+    ],
+    "split3_test_score": [
+      0.9165094494819641
+    ],
+    "split4_test_score": [
+      0.9193395972251892
+    ],
+    "mean_test_score": [
+      0.916517972946167
+    ],
+    "std_test_score": [
+      0.0039985582677366
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "english/minmax/cnn/psf/9301/model.json"
+}

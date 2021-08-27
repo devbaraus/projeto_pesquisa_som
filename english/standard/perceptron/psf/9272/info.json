@@ -1,0 +1,61 @@
+{
+  "method": "Perceptron",
+  "language": "english",
+  "seed": 42,
+  "normalization": "nonorm",
+  "library": "psf",
+  "sample_rate": 24000,
+  "sizes": [
+    10601,
+    3534,
+    3534
+  ],
+  "score_train": 1.0,
+  "score_test": 0.9272778630256653,
+  "timestamp": 1627519944.5937164,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      1130.3679491996766
+    ],
+    "std_fit_time": [
+      2.2156991072166474
+    ],
+    "mean_score_time": [
+      0.5578273296356201
+    ],
+    "std_score_time": [
+      0.23846072482761196
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.8981612324714661
+    ],
+    "split1_test_score": [
+      0.8919811248779297
+    ],
+    "split2_test_score": [
+      0.9037736058235168
+    ],
+    "split3_test_score": [
+      0.8995283246040344
+    ],
+    "split4_test_score": [
+      0.9122641682624817
+    ],
+    "mean_test_score": [
+      0.9011416912078858
+    ],
+    "std_test_score": [
+      0.006723667629165405
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "english/standard/perceptron/psf/9272/model.json"
+}

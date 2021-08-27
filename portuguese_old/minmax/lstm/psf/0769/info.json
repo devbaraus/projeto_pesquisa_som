@@ -1,0 +1,66 @@
+{
+  "method": "lstm",
+  "language": "portuguese",
+  "normalization": "minmax",
+  "seed": 42,
+  "library": "psf",
+  "sample_rate": 24000,
+  "shape": [
+    193,
+    234,
+    13
+  ],
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 0.08290155231952667,
+  "score_test": 0.07692307978868484,
+  "timestamp": 1627693493.9402287,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      304.30477113723754
+    ],
+    "std_fit_time": [
+      0.9335169506586652
+    ],
+    "mean_score_time": [
+      0.7808438777923584
+    ],
+    "std_score_time": [
+      0.2762932114221358
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.0
+    ],
+    "split1_test_score": [
+      0.0
+    ],
+    "split2_test_score": [
+      0.0
+    ],
+    "split3_test_score": [
+      0.0
+    ],
+    "split4_test_score": [
+      0.0
+    ],
+    "mean_test_score": [
+      0.0
+    ],
+    "std_test_score": [
+      0.0
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "portuguese/minmax/lstm/psf/0769/model.json"
+}

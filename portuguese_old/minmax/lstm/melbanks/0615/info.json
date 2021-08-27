@@ -1,0 +1,66 @@
+{
+  "method": "lstm",
+  "language": "portuguese",
+  "normalization": "minmax",
+  "seed": 42,
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    193,
+    40,
+    500
+  ],
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 0.44041451811790466,
+  "score_test": 0.0615384615957737,
+  "timestamp": 1627916698.024408,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      106.65118751525878
+    ],
+    "std_fit_time": [
+      0.7819441475931604
+    ],
+    "mean_score_time": [
+      1.0535088062286377
+    ],
+    "std_score_time": [
+      0.6718173171145603
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.025641025975346565
+    ],
+    "split1_test_score": [
+      0.0
+    ],
+    "split2_test_score": [
+      0.0
+    ],
+    "split3_test_score": [
+      0.02631578966975212
+    ],
+    "split4_test_score": [
+      0.0
+    ],
+    "mean_test_score": [
+      0.010391363129019737
+    ],
+    "std_test_score": [
+      0.012728557346496699
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "portuguese/minmax/lstm/melbanks/0615/model.json"
+}

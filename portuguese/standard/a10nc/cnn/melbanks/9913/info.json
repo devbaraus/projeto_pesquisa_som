@@ -1,0 +1,118 @@
+{
+  "method": "cnn",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "10",
+    "noise",
+    "cut"
+  ],
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    4857,
+    40,
+    500,
+    1
+  ],
+  "sizes": [
+    4857,
+    1619,
+    1620
+  ],
+  "score_train": 1.0,
+  "score_test": 0.9913580417633057,
+  "timestamp": 1629866590.6821363,
+  "params": {
+    "conv2d1": 32,
+    "conv2d2": 64,
+    "dense": 128,
+    "dropout1": 0.25,
+    "dropout2": 0.5,
+    "epochs": 2000,
+    "resizing": [
+      32,
+      32
+    ]
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      32326.6480779171
+    ],
+    "std_fit_time": [
+      36.687914868510454
+    ],
+    "mean_score_time": [
+      1.0369767189025878
+    ],
+    "std_score_time": [
+      0.48713642975585686
+    ],
+    "param_conv2d1": [
+      32
+    ],
+    "param_conv2d2": [
+      64
+    ],
+    "param_dense": [
+      128
+    ],
+    "param_dropout1": [
+      0.25
+    ],
+    "param_dropout2": [
+      0.5
+    ],
+    "param_epochs": [
+      2000
+    ],
+    "param_resizing": [
+      [
+        32,
+        32
+      ]
+    ],
+    "params": [
+      {
+        "conv2d1": 32,
+        "conv2d2": 64,
+        "dense": 128,
+        "dropout1": 0.25,
+        "dropout2": 0.5,
+        "epochs": 2000,
+        "resizing": [
+          32,
+          32
+        ]
+      }
+    ],
+    "split0_test_score": [
+      0.9876543283462524
+    ],
+    "split1_test_score": [
+      0.9886831045150757
+    ],
+    "split2_test_score": [
+      0.9876416325569153
+    ],
+    "split3_test_score": [
+      0.9876416325569153
+    ],
+    "split4_test_score": [
+      0.992790937423706
+    ],
+    "mean_test_score": [
+      0.988882327079773
+    ],
+    "std_test_score": [
+      0.001995171728880069
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/a10nc/cnn/melbanks/9913/model.json"
+}

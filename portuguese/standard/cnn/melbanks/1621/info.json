@@ -1,0 +1,114 @@
+{
+  "method": "cnn",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [],
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    441,
+    40,
+    500,
+    1
+  ],
+  "sizes": [
+    441,
+    147,
+    148
+  ],
+  "score_train": 1.0,
+  "score_test": 0.1621621549129486,
+  "timestamp": 1629802199.601105,
+  "params": {
+    "conv2d1": 32,
+    "conv2d2": 64,
+    "dense": 128,
+    "dropout1": 0.25,
+    "dropout2": 0.5,
+    "epochs": 2000,
+    "resizing": [
+      32,
+      32
+    ]
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      2981.303192949295
+    ],
+    "std_fit_time": [
+      7.514644651403105
+    ],
+    "mean_score_time": [
+      0.41052885055541993
+    ],
+    "std_score_time": [
+      0.25122143991698465
+    ],
+    "param_conv2d1": [
+      32
+    ],
+    "param_conv2d2": [
+      64
+    ],
+    "param_dense": [
+      128
+    ],
+    "param_dropout1": [
+      0.25
+    ],
+    "param_dropout2": [
+      0.5
+    ],
+    "param_epochs": [
+      2000
+    ],
+    "param_resizing": [
+      [
+        32,
+        32
+      ]
+    ],
+    "params": [
+      {
+        "conv2d1": 32,
+        "conv2d2": 64,
+        "dense": 128,
+        "dropout1": 0.25,
+        "dropout2": 0.5,
+        "epochs": 2000,
+        "resizing": [
+          32,
+          32
+        ]
+      }
+    ],
+    "split0_test_score": [
+      0.02247191034257412
+    ],
+    "split1_test_score": [
+      0.10227272659540176
+    ],
+    "split2_test_score": [
+      0.10227272659540176
+    ],
+    "split3_test_score": [
+      0.10227272659540176
+    ],
+    "split4_test_score": [
+      0.04545454680919647
+    ],
+    "mean_test_score": [
+      0.07494892738759518
+    ],
+    "std_test_score": [
+      0.034244782998560375
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/cnn/melbanks/1621/model.json"
+}

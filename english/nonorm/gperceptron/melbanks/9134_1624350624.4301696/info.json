@@ -1,6 +1,7 @@
 {
   "method": "Perceptron",
   "seed": 42,
+  "normalization": "nonorm",
   "library": "melbanks",
   "sample_rate": 24000,
   "sizes": [

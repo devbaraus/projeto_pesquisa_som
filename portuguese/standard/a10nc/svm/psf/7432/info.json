@@ -1,0 +1,85 @@
+{
+  "method": "Support Vector Machines",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "10",
+    "noise",
+    "cut"
+  ],
+  "library": "psf",
+  "sample_rate": 24000,
+  "shape": [
+    441,
+    3042
+  ],
+  "sizes": [
+    441,
+    147,
+    148
+  ],
+  "score_train": 1.0,
+  "score_test": 0.7432432432432432,
+  "timestamp": 1629508972.2183669,
+  "params": {
+    "C": 10,
+    "decision_function_shape": "ovo",
+    "kernel": "linear"
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      0.34550933837890624
+    ],
+    "std_fit_time": [
+      0.08080812735704421
+    ],
+    "mean_score_time": [
+      0.04008259773254395
+    ],
+    "std_score_time": [
+      0.00838813568572159
+    ],
+    "param_C": [
+      10
+    ],
+    "param_decision_function_shape": [
+      "ovo"
+    ],
+    "param_kernel": [
+      "linear"
+    ],
+    "params": [
+      {
+        "C": 10,
+        "decision_function_shape": "ovo",
+        "kernel": "linear"
+      }
+    ],
+    "split0_test_score": [
+      0.5730337078651685
+    ],
+    "split1_test_score": [
+      0.6477272727272727
+    ],
+    "split2_test_score": [
+      0.7045454545454546
+    ],
+    "split3_test_score": [
+      0.6931818181818182
+    ],
+    "split4_test_score": [
+      0.6931818181818182
+    ],
+    "mean_test_score": [
+      0.6623340143003065
+    ],
+    "std_test_score": [
+      0.04872962410071531
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}

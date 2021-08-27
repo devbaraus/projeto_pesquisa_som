@@ -1,0 +1,61 @@
+{
+  "method": "Perceptron",
+  "language": "english",
+  "seed": 42,
+  "normalization": "nonorm",
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "sizes": [
+    10601,
+    3534,
+    3534
+  ],
+  "score_train": 1.0,
+  "score_test": 0.8548387289047241,
+  "timestamp": 1627530498.0061595,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      6349.569401264191
+    ],
+    "std_fit_time": [
+      33.132127513936524
+    ],
+    "mean_score_time": [
+      1.4364326000213623
+    ],
+    "std_score_time": [
+      0.6119502112200252
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.7256011366844177
+    ],
+    "split1_test_score": [
+      0.75
+    ],
+    "split2_test_score": [
+      0.7155660390853882
+    ],
+    "split3_test_score": [
+      0.7849056720733643
+    ],
+    "split4_test_score": [
+      0.7566037774085999
+    ],
+    "mean_test_score": [
+      0.746535325050354
+    ],
+    "std_test_score": [
+      0.02442538905231003
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 500,
+  "batch_size": 128,
+  "model_file": "english/standard/perceptron/melbanks/8548/model.json"
+}

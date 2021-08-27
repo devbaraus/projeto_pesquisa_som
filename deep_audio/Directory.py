@@ -58,11 +58,12 @@ def load_json_data(path, inputs_fieldname='attrs'):
         return inputs, labels, mapping
 
 
-def processed_filename(language, library, rate, n_people=None, n_segments=None, json=True):
+def processed_filename(language, library, rate, n_people=None, n_segments=None, augmentation=None, json=True):
     filename = f'{language}/'
     filename += 'processed/'
     # filename += f'{normalization}/'
-    filename = verify_people_segments(filename, n_people, n_segments)
+    filename += verify_people_segments(n_people, n_segments)
+    filename += verify_augmentation(augmentation)
 
     if json:
         filename += f'{library}_{rate}.json'
@@ -70,13 +71,14 @@ def processed_filename(language, library, rate, n_people=None, n_segments=None, 
     return filename
 
 
-def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None, json=True):
+def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None, augmentation=None, json=True):
     accuracy = Process.pad_accuracy(accuracy)
 
     filename = f'{language}/'
     filename += f'{normalization}/'
     # filename += 'models/'
-    filename = verify_people_segments(filename, n_people, n_segments)
+    filename += verify_people_segments(n_people, n_segments)
+    filename += verify_augmentation(augmentation)
     filename += f'{model}/'
     filename += f'{library}/'
     filename += f'{accuracy}/'
@@ -87,7 +89,8 @@ def model_filename(model, language, library, normalization, accuracy, n_people=N
     return filename
 
 
-def verify_people_segments(filename='', people=None, segments=None):
+def verify_people_segments(people=None, segments=None):
+    filename = ''
     if people:
         filename += f'p{people}'
         if segments:
@@ -95,6 +98,16 @@ def verify_people_segments(filename='', people=None, segments=None):
     if segments:
         filename += f's{segments}'
     if people or segments:
+        filename += '/'
+    return filename
+
+
+def verify_augmentation(augmentation=None):
+    filename = ''
+    if augmentation:
+        filename += f'a{augmentation[0]}'
+        for kind in augmentation[1:]:
+            filename += f'{kind[0]}'
         filename += '/'
     return filename
 

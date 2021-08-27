@@ -1,0 +1,58 @@
+{
+  "method": "Perceptron",
+  "seed": 42,
+  "normalization": "nonorm",
+  "library": "mixed",
+  "sample_rate": 24000,
+  "sizes": [
+    193,
+    65,
+    65
+  ],
+  "score_train": 1.0,
+  "score_test": 0.2461538463830948,
+  "timestamp": 1624306706.4692109,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      792.0793681621551
+    ],
+    "std_fit_time": [
+      1.5312116804970244
+    ],
+    "mean_score_time": [
+      0.3492422580718994
+    ],
+    "std_score_time": [
+      0.16211535673304694
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.10256410390138626
+    ],
+    "split1_test_score": [
+      0.12820513546466827
+    ],
+    "split2_test_score": [
+      0.025641025975346565
+    ],
+    "split3_test_score": [
+      0.1315789520740509
+    ],
+    "split4_test_score": [
+      0.15789473056793213
+    ],
+    "mean_test_score": [
+      0.10917678959667683
+    ],
+    "std_test_score": [
+      0.04529751432146527
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}

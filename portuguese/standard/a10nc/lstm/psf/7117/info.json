@@ -1,0 +1,113 @@
+{
+  "method": "lstm",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "10",
+    "noise",
+    "cut"
+  ],
+  "library": "psf",
+  "sample_rate": 24000,
+  "shape": [
+    4857,
+    234,
+    13
+  ],
+  "sizes": [
+    4857,
+    1619,
+    1620
+  ],
+  "score_train": 0.8346716165542603,
+  "score_test": 0.7117283940315247,
+  "timestamp": 1629717440.2016208,
+  "params": {
+    "dense1": 64,
+    "dense2": 32,
+    "dense3": 24,
+    "dropout1": 0.2,
+    "dropout2": 0.2,
+    "dropout3": 0.4,
+    "epochs": 2000,
+    "lstm": 96
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      35313.03526482582
+    ],
+    "std_fit_time": [
+      102.9277061346119
+    ],
+    "mean_score_time": [
+      2.0144696712493895
+    ],
+    "std_score_time": [
+      0.788172001592323
+    ],
+    "param_dense1": [
+      64
+    ],
+    "param_dense2": [
+      32
+    ],
+    "param_dense3": [
+      24
+    ],
+    "param_dropout1": [
+      0.2
+    ],
+    "param_dropout2": [
+      0.2
+    ],
+    "param_dropout3": [
+      0.4
+    ],
+    "param_epochs": [
+      2000
+    ],
+    "param_lstm": [
+      96
+    ],
+    "params": [
+      {
+        "dense1": 64,
+        "dense2": 32,
+        "dense3": 24,
+        "dropout1": 0.2,
+        "dropout2": 0.2,
+        "dropout3": 0.4,
+        "epochs": 2000,
+        "lstm": 96
+      }
+    ],
+    "split0_test_score": [
+      0.5771604776382446
+    ],
+    "split1_test_score": [
+      0.6800411343574524
+    ],
+    "split2_test_score": [
+      0.5478887557983398
+    ],
+    "split3_test_score": [
+      0.5355303883552551
+    ],
+    "split4_test_score": [
+      0.6127703189849854
+    ],
+    "mean_test_score": [
+      0.5906782150268555
+    ],
+    "std_test_score": [
+      0.052016809283847304
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/a10nc/lstm/psf/7117/model.json"
+}
