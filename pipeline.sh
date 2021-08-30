@@ -54,32 +54,32 @@ python3 svm.py -l portuguese -r psf -n standard
 python3 svm.py -l portuguese -r psf -n standard -a 5,noise,cut
 python3 svm.py -l portuguese -r psf -n standard -a 10,noise,cut
 python3 svm.py -l portuguese -r psf -n standard -a 15,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r psf -n standard
-python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 5,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 10,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 15,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 5,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 10,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard
-python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 5,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 10,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 15,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard
+# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 5,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 10,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 15,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard
+# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 5,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 10,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard
+# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 5,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 10,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 15,noise,cut
 
 python3 svm.py -l portuguese -r melbanks -n standard
 python3 svm.py -l portuguese -r melbanks -n standard -a 5,noise,cut
 python3 svm.py -l portuguese -r melbanks -n standard -a 10,noise,cut
 python3 svm.py -l portuguese -r melbanks -n standard -a 15,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard
-python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 5,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 10,noise,cut
-python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard
-python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 5,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 10,noise,cut
-python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard
-python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 5,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 10,noise,cut
-python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard
+# python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 5,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 10,noise,cut
+# python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard
+# python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 5,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 10,noise,cut
+# python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard
+# python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 5,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 10,noise,cut
+# python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise,cut

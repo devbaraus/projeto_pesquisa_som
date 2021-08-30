@@ -18,7 +18,7 @@ random_state = 42
 global X_train, X_valid, X_test, y_train, y_valid, y_test
 
 file_path = Directory.processed_filename(
-    language, library, sampling_rate, people, segments)
+    language, library, sampling_rate, people, segments, augment)
 # %%
 
 X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
