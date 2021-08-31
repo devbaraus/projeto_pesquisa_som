@@ -126,6 +126,32 @@ def dump_grid(file, model, language, method, seed, library, sizes, score_train, 
     return
 
 
+def dump_model(file, params, language, method, seed, library, sizes, score_train, score_test, sampling_rate, normalization, shape, augmentation, extra={}):
+    from time import time
+    from deep_audio import JSON
+
+    dump_info = {
+        'method': method,
+        'language': language,
+        'normalization': normalization,
+        'seed': seed,
+        'augmentation': augmentation,
+        'library': library,
+        'sample_rate': sampling_rate,
+        'shape': shape,
+        'sizes': sizes,
+        'score_train': score_train,
+        'score_test': score_test,
+        'timestamp': time(),
+        'params': params,
+        **extra
+    }
+
+    JSON.create_json_file(file, dump_info, cls=JSON.NumpyEncoder)
+
+    return
+
+
 def load_processed_data(path, inputs_fieldname='mfcc'):
     import json
     import numpy as np

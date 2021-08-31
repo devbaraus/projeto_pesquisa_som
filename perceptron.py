@@ -36,47 +36,8 @@ DATASET_PATH = Directory.processed_filename(
 # %%
 # SPLIT DOS DADOS
 
-if language == 'mixed' and library == 'mixed':
-    first_folder = Directory.processed_filename(
-        'portuguese', 'psf', n_rate, None, None)
-    second_folder = Directory.processed_filename(
-        'portuguese', 'melbanks', n_rate, None, None)
-    third_folder = Directory.processed_filename(
-        'english', 'psf', n_rate, n_people, n_segments)
-    fourth_folder = Directory.processed_filename(
-        'english', 'melbanks', n_rate, n_people, n_segments)
-
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection(
-        first_folder, second_folder, third_folder, fourth_folder,
-        validation=True,
-        test=False
-    )
-elif language == 'mixed':
-    print('MIXED LANGUAGE')
-    portuguese_folder = Directory.processed_filename(
-        'portuguese', library, n_rate, None, None)
-    english_folder = Directory.processed_filename(
-        'english', library, n_rate, n_people, n_segments)
-
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection_language(
-        portuguese_folder=portuguese_folder,
-        english_folder=english_folder,
-        validation=True
-    )
-elif library == 'mixed':
-    first_folder = Directory.processed_filename(
-        language, 'psf', n_rate, n_people, n_segments)
-    second_folder = Directory.processed_filename(
-        language, 'melbanks', n_rate, n_people, n_segments)
-
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.mixed_selection_representation(
-        first_folder,
-        second_folder,
-        validation=True,
-        test=False)
-else:
-    X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
-        DATASET_PATH)
+X_train, X_valid, X_test, y_train, y_valid, y_test = Process.selection(
+    DATASET_PATH)
 
 
 mapping = set(y_train)
@@ -115,6 +76,7 @@ model = build_model(learning_rate=learning_rate)
 # SALVA A ESTRUTURA DO MODELO
 
 timestamp = int(time.time())
+
 
 Directory.create_directory(
     f'{language}/models/{model_algo}/{library}/{filename_ps}{timestamp}')
@@ -165,7 +127,7 @@ plt.close()
 
 # %%
 # PEGA A MAIOR E ACURÁCIA
-higher_accuracy = model.evaluate(X_test, y_test, batch_size=128)
+
 
 # %%
 dump_info = {
@@ -190,5 +152,3 @@ higher_accuracy = str(int(higher_accuracy[1] * 10000)).zfill(4)
 # RENOMEIA A PASTA
 Directory.rename_directory(f'{language}/models/{model_algo}/{library}/{filename_ps}{timestamp}',
                            f'{language}/models/{model_algo}/{library}/{filename_ps}acc{higher_accuracy}_seed{random_state}_epochs{len(history.history["accuracy"])}_time{timestamp}')
-
-# %%
