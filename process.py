@@ -49,11 +49,9 @@ f = Directory.filenames(path)
 
 
 def _noise(sample, rate):
-    mean_intensity = np.mean(np.abs(sample))
-    intensity = np.mean(np.abs(sample)[np.abs(sample) > mean_intensity])
-
+    noise_max = np.max(sample)
     return Augmentation.noise_addition(
-        sample, random.uniform(intensity * 0.3, intensity * 0.8))
+        sample, random.uniform(noise_max * 0.01, noise_max * 0.1))
 
 
 def _cut(sample, rate):
@@ -107,26 +105,26 @@ def process_directory(dir, index, library):
         coef_pre_enfase = 0.97
         append_energy = 0
 
-        # if augment:
-        #     for _ in range(int(augment[0])):
-        #         flag = False
-        #         aug = samples[0]
+        if augment:
+            for _ in range(int(augment[0])):
+                flag = False
+                aug = samples[0]
 
-        #         if random.uniform() > 0.5 and 'cut' in augment:
-        #             aug = _cut(aug, rate)
-        #             flag = True
+                if random.uniform() > 0.5 and 'cut' in augment:
+                    aug = _cut(aug, rate)
+                    flag = True
 
-        #         if random.uniform() > 0.5 and 'noise' in augment:
-        #             aug = _noise(aug, rate)
-        #             flag = True
+                if random.uniform() > 0.5 and 'noise' in augment:
+                    aug = _noise(aug, rate)
+                    flag = True
 
-        #         if not flag and len(augment) == 3:
-        #             if random.uniform() > 0.5:
-        #                 aug = _cut(aug, rate)
-        #             else:
-        #                 aug = _noise(aug, rate)
+                if not flag and len(augment) == 3:
+                    if random.uniform() > 0.5:
+                        aug = _cut(aug, rate)
+                    else:
+                        aug = _noise(aug, rate)
 
-        #         samples.append(aug)
+                samples.append(aug)
 
         for sample_index, sample in enumerate(samples):
             if library == 'stft':
@@ -157,10 +155,12 @@ def process_directory(dir, index, library):
                 )
                 attr = np.array(attr)
 
-            Visualization.plot_cepstrals(
-                attr, fig_name=f'teste.png')
-            Audio.write(
-                f'portuguese/processed/psf/{dir}_{i}_{sample_index}.wav', sample, rate)
+            # Visualization.plot_cepstrals(
+            #     attr, fig_name=f'teste.png')
+            Visualization.plot_audio(
+                sample, rate, fig_name='./teste.png')
+            # Audio.write(
+            #     f'portuguese/processed/psf/{dir}_{i}_{sample_index}.wav', sample, rate)
 
             m['attrs'].append(attr.tolist())
 
@@ -173,17 +173,17 @@ if __name__ == '__main__':
     filename = Directory.processed_filename(
         language, library, sampling_rate, n_audios, n_segments, augment)
 
-    # m = []
-    # for j, i in enumerate(f):
-    #     if j < 1:
-    #         m.append(process_directory(i, j, library))
+    m = []
+    for j, i in enumerate(f):
+        if j < 1:
+            m.append(process_directory(i, j, library))
 
-    m = Parallel(n_jobs=-1, verbose=len(f))(
-        delayed(process_directory)
-        (i, j, library)
-        for j, i in enumerate(f)
-        if n_audios == None or j < n_audios
-    )
+    # m = Parallel(n_jobs=-1, verbose=len(f))(
+    #     delayed(process_directory)
+    #     (i, j, library)
+    #     for j, i in enumerate(f)
+    #     if n_audios == None or j < n_audios
+    # )
 
     Process.object_to_json(
         filename,

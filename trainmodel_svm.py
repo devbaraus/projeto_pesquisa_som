@@ -53,7 +53,7 @@ filename_holder = Directory.model_filename(
 model.fit(X_train, y_train)
 
 Directory.create_directory(filename_holder)
-dump(model, open(filename_holder + 'weight.h5', 'wb'))
+dump(model, open(filename_holder + 'model.h5', 'wb'))
 dump(scaler, open(filename_holder + 'scaler.pkl', 'wb'))
 
 # SALVA OS PARAMETROS
