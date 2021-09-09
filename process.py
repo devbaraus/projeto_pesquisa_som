@@ -157,8 +157,8 @@ def process_directory(dir, index, library):
 
             # Visualization.plot_cepstrals(
             #     attr, fig_name=f'teste.png')
-            Visualization.plot_audio(
-                sample, rate, fig_name='./teste.png')
+            # Visualization.plot_audio(
+            #     sample, rate, fig_name='./teste.png')
             # Audio.write(
             #     f'portuguese/processed/psf/{dir}_{i}_{sample_index}.wav', sample, rate)
 

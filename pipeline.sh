@@ -1,7 +1,7 @@
-# python3 merge_audios.py -l portuguese
+python3 merge_audios.py -l portuguese
 # python3 merge_audios.py -l english
 
-# python3 process.py -l portuguese -r psf
+python3 process.py -l portuguese -r psf
 python3 process.py -l portuguese -r psf -a 15,noise
 # python3 process.py -l portuguese -r psf -a 5,noise,cut
 # python3 process.py -l portuguese -r psf -a 10,noise,cut
