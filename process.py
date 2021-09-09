@@ -173,17 +173,17 @@ if __name__ == '__main__':
     filename = Directory.processed_filename(
         language, library, sampling_rate, n_audios, n_segments, augment)
 
-    m = []
-    for j, i in enumerate(f):
-        if j < 1:
-            m.append(process_directory(i, j, library))
+    # m = []
+    # for j, i in enumerate(f):
+    #     if j < 1:
+    #         m.append(process_directory(i, j, library))
 
-    # m = Parallel(n_jobs=-1, verbose=len(f))(
-    #     delayed(process_directory)
-    #     (i, j, library)
-    #     for j, i in enumerate(f)
-    #     if n_audios == None or j < n_audios
-    # )
+    m = Parallel(n_jobs=-1, verbose=len(f))(
+        delayed(process_directory)
+        (i, j, library)
+        for j, i in enumerate(f)
+        if n_audios == None or j < n_audios
+    )
 
     Process.object_to_json(
         filename,
