@@ -107,26 +107,26 @@ def process_directory(dir, index, library):
         coef_pre_enfase = 0.97
         append_energy = 0
 
-        if augment:
-            for _ in range(int(augment[0])):
-                flag = False
-                aug = samples[0]
+        # if augment:
+        #     for _ in range(int(augment[0])):
+        #         flag = False
+        #         aug = samples[0]
 
-                if random.uniform() > 0.5 and 'cut' in augment:
-                    aug = _cut(aug, rate)
-                    flag = True
+        #         if random.uniform() > 0.5 and 'cut' in augment:
+        #             aug = _cut(aug, rate)
+        #             flag = True
 
-                if random.uniform() > 0.5 and 'noise' in augment:
-                    aug = _noise(aug, rate)
-                    flag = True
+        #         if random.uniform() > 0.5 and 'noise' in augment:
+        #             aug = _noise(aug, rate)
+        #             flag = True
 
-                if not flag and len(augment) == 3:
-                    if random.uniform() > 0.5:
-                        aug = _cut(aug, rate)
-                    else:
-                        aug = _noise(aug, rate)
+        #         if not flag and len(augment) == 3:
+        #             if random.uniform() > 0.5:
+        #                 aug = _cut(aug, rate)
+        #             else:
+        #                 aug = _noise(aug, rate)
 
-                samples.append(aug)
+        #         samples.append(aug)
 
         for sample_index, sample in enumerate(samples):
             if library == 'stft':
@@ -157,12 +157,10 @@ def process_directory(dir, index, library):
                 )
                 attr = np.array(attr)
 
-            # Visualization.plot_cepstrals(
-            #     attr, fig_name=f'portuguese/processed/melbanks/cep_{dir}_{i}_{sample_index}.png')
-            # Visualization.plot_audio(
-            #     sample, rate, fig_name=f'portuguese/processed/psf/sig_{dir}_{i}_{sample_index}.png')
-            # Audio.write(
-            #     f'portuguese/processed/psf/{dir}_{i}_{sample_index}.wav', sample, rate)
+            Visualization.plot_cepstrals(
+                attr, fig_name=f'teste.png')
+            Audio.write(
+                f'portuguese/processed/psf/{dir}_{i}_{sample_index}.wav', sample, rate)
 
             m['attrs'].append(attr.tolist())
 

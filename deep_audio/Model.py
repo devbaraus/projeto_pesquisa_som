@@ -126,7 +126,7 @@ def dump_grid(file, model, language, method, seed, library, sizes, score_train, 
     return
 
 
-def dump_model(file, params, language, method, seed, library, sizes, score_train, score_test, sampling_rate, normalization, shape, augmentation, extra={}):
+def dump_model(file, language, method, seed, library, sampling_rate, normalization, shape, augmentation, params=None, extra={}):
     from time import time
     from deep_audio import JSON
 
@@ -139,9 +139,6 @@ def dump_model(file, params, language, method, seed, library, sizes, score_train
         'library': library,
         'sample_rate': sampling_rate,
         'shape': shape,
-        'sizes': sizes,
-        'score_train': score_train,
-        'score_test': score_test,
         'timestamp': time(),
         'params': params,
         **extra

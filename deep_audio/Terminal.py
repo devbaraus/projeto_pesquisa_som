@@ -10,10 +10,11 @@ def get_args(argv=sys.argv[1:]):
     flat = False
     people = None
     segments = None
+    inferencia = ''
     augmentation = []
     try:
-        opts, args = getopt.getopt(argv, "h:l:r:p:s:m:n:f:a:", [
-                                   "language=", "representation=", "people=", "segments=", "method=", "normalization=", "flat=", "augmentation="])
+        opts, args = getopt.getopt(argv, "h:l:r:p:s:m:n:f:a:i:", [
+                                   "language=", "representation=", "people=", "segments=", "method=", "normalization=", "flat=", "augmentation=", "inferencia="])
     except getopt.GetoptError:
         print('test.py -l <language> -r <representation> -p <people> -s <segments>')
         sys.exit(2)
@@ -35,6 +36,8 @@ def get_args(argv=sys.argv[1:]):
             normalization = arg
         elif opt in ("-f", "--flat"):
             flat = bool(arg)
+        elif opt in ("-i", "--inferencia"):
+            inferencia = arg
         elif opt in ("-a", "--augmentation"):
             augmentation = arg.split(',')
             if len(augmentation) < 2:
@@ -50,6 +53,7 @@ def get_args(argv=sys.argv[1:]):
         'normalization': normalization,
         'flat': flat,
         'augmentation': augmentation,
+        'inferencia': inferencia
     }
 
     print('ARGS:', args)

@@ -66,12 +66,12 @@ def dim(a):
     return [len(a)] + dim(a[0])
 
 
-def selection(folder, valid_size=0.25, test_size=0.2, random_state=42, flat=False, squeeze=False):
+def selection(folder, valid_size=0.25, test_size=0.2, random_state=42, flat=False, squeeze=False, mapping=False):
     from deep_audio import Directory
     from sklearn.model_selection import train_test_split
     from numpy import squeeze
 
-    X, y, _ = Directory.load_json_data(folder)
+    X, y, labels = Directory.load_json_data(folder)
 
     if flat:
         X = flatten_matrix(X)
@@ -79,11 +79,19 @@ def selection(folder, valid_size=0.25, test_size=0.2, random_state=42, flat=Fals
     if squeeze == True:
         X = squeeze(X, axis=3)
 
+    if test_size == 0:
+        if mapping:
+            return X, y, labels
+
+        return X, y
+
     X_train, X_test, y_train, y_test = train_test_split(X,
                                                         y,
                                                         stratify=y,
                                                         test_size=test_size,
                                                         random_state=random_state)
+    if valid_size == 0:
+        return X_train, X_test, y_train, y_test
 
     X_train, X_valid, y_train, y_valid = train_test_split(X_train,
                                                           y_train,

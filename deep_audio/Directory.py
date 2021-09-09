@@ -71,17 +71,19 @@ def processed_filename(language, library, rate, n_people=None, n_segments=None, 
     return filename
 
 
-def model_filename(model, language, library, normalization, accuracy, n_people=None, n_segments=None, augmentation=None, json=True):
-    accuracy = Process.pad_accuracy(accuracy)
+def model_filename(method, language, library, normalization, accuracy=0, n_people=None, n_segments=None, augmentation=None, json=True, models=False):
 
     filename = f'{language}/'
+    if models:
+        filename += 'models/'
     filename += f'{normalization}/'
-    # filename += 'models/'
     filename += verify_people_segments(n_people, n_segments)
     filename += verify_augmentation(augmentation)
-    filename += f'{model}/'
+    filename += f'{method}/'
     filename += f'{library}/'
-    filename += f'{accuracy}/'
+    if accuracy != 0:
+        accuracy = Process.pad_accuracy(accuracy)
+        filename += f'{accuracy}/'
 
     if json:
         filename += f'info.json'
