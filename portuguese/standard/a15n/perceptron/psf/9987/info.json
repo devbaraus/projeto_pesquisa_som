@@ -1,0 +1,70 @@
+{
+  "method": "perceptron",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "15",
+    "noise"
+  ],
+  "library": "psf",
+  "sample_rate": 24000,
+  "shape": [
+    7065,
+    234,
+    13
+  ],
+  "sizes": [
+    7065,
+    2355,
+    2356
+  ],
+  "score_train": 1.0,
+  "score_test": 0.9987266659736633,
+  "timestamp": 1631239545.2448976,
+  "params": {},
+  "cv_results": {
+    "mean_fit_time": [
+      1778.4235572814941
+    ],
+    "std_fit_time": [
+      3.9066794448583146
+    ],
+    "mean_score_time": [
+      0.3320490837097168
+    ],
+    "std_score_time": [
+      0.10777032551744126
+    ],
+    "params": [
+      {}
+    ],
+    "split0_test_score": [
+      0.9964614510536194
+    ],
+    "split1_test_score": [
+      0.9992923140525818
+    ],
+    "split2_test_score": [
+      0.9971691370010376
+    ],
+    "split3_test_score": [
+      0.9985845685005188
+    ],
+    "split4_test_score": [
+      0.9978768825531006
+    ],
+    "mean_test_score": [
+      0.9978768706321717
+    ],
+    "std_test_score": [
+      0.0010008612116946902
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "epochs": 2000,
+  "batch_size": 128,
+  "model_file": "portuguese/standard/a15n/perceptron/psf/9987/model.json"
+}

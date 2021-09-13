@@ -1,0 +1,84 @@
+{
+  "method": "Support Vector Machines",
+  "language": "portuguese",
+  "normalization": "standard",
+  "seed": 42,
+  "augmentation": [
+    "15",
+    "noise"
+  ],
+  "library": "melbanks",
+  "sample_rate": 24000,
+  "shape": [
+    7065,
+    20000
+  ],
+  "sizes": [
+    7065,
+    2355,
+    2356
+  ],
+  "score_train": 1.0,
+  "score_test": 1.0,
+  "timestamp": 1631361067.0609171,
+  "params": {
+    "C": 10,
+    "decision_function_shape": "ovo",
+    "kernel": "linear"
+  },
+  "cv_results": {
+    "mean_fit_time": [
+      457.36765642166137
+    ],
+    "std_fit_time": [
+      1.6679847420670064
+    ],
+    "mean_score_time": [
+      132.6163980960846
+    ],
+    "std_score_time": [
+      0.7754404003539926
+    ],
+    "param_C": [
+      10
+    ],
+    "param_decision_function_shape": [
+      "ovo"
+    ],
+    "param_kernel": [
+      "linear"
+    ],
+    "params": [
+      {
+        "C": 10,
+        "decision_function_shape": "ovo",
+        "kernel": "linear"
+      }
+    ],
+    "split0_test_score": [
+      0.9957537154989384
+    ],
+    "split1_test_score": [
+      1.0
+    ],
+    "split2_test_score": [
+      0.9957537154989384
+    ],
+    "split3_test_score": [
+      0.9950460014154282
+    ],
+    "split4_test_score": [
+      1.0
+    ],
+    "mean_test_score": [
+      0.997310686482661
+    ],
+    "std_test_score": [
+      0.0022109694765482307
+    ],
+    "rank_test_score": [
+      1
+    ]
+  },
+  "model_file": null
+}
