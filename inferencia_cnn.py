@@ -98,25 +98,31 @@ mfcc_audios = scaler.transform(
 
 prediction = model.predict(mfcc_audios)
 
-true_pred = prediction > 0.25
+# true_pred = prediction > 0.25
 
-y_hats = []
-confidences = []
-mapping = []
+# y_hats = []
+# confidences = []
+# mapping = []
 
-for j, arr in enumerate(true_pred):
-    y_hats.append([])
-    confidences.append([])
-    mapping.append([])
-    for i, isTrue in enumerate(arr):
-        if isTrue:
-            y_hats[j].append(i)
-            confidences[j].append(prediction[j][i])
-            mapping[j].append(info['mapping'][i])
+# for j, arr in enumerate(true_pred):
+#     y_hats.append([])
+#     confidences.append([])
+#     mapping.append([])
+#     for i, isTrue in enumerate(arr):
+#         if isTrue:
+#             y_hats[j].append(i)
+#             confidences[j].append(prediction[j][i])
+#             mapping[j].append(info['mapping'][i])
 
 # print(y_hats)
 # print(confidences)
 # print(mapping)
 
-for i, arr in enumerate(y_hats):
-    print(f'Confiança: {confidences[i]} | Predito: { mapping[i]}')
+# for i, arr in enumerate(y_hats):
+#     print(f'Confiança: {confidences[i]} | Predito: { mapping[i]}')
+
+y_hat = np.argmax(prediction, axis=-1)
+confidence = np.max(prediction, axis=-1)
+
+for i, arr in enumerate(y_hat):
+    print(f'Confiança: {confidence[i]} | Predito: { info["mapping"][arr]}')
