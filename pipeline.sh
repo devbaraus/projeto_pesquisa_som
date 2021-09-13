@@ -2,7 +2,11 @@
 # python3 merge_audios.py -l english
 
 # python3 process.py -l portuguese -r psf
+<<<<<<< HEAD
 # python3 process.py -l portuguese -r psf -a 15,noise
+=======
+python3 process.py -l portuguese -r psf -a 15,noise
+>>>>>>> aa1efe7aa1714a2a8fbb415d171b27efa3750bb2
 # python3 process.py -l portuguese -r psf -a 5,noise,cut
 # python3 process.py -l portuguese -r psf -a 10,noise,cut
 # python3 process.py -l portuguese -r psf -a 15,noise,cut
@@ -78,10 +82,13 @@
 # python3 svm.py -l portuguese -r melbanks -n standard -a 10,noise,cut
 # python3 svm.py -l portuguese -r melbanks -n standard -a 15,noise,cut
 
+
 # python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard
 # python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 5,noise,cut
 # python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 10,noise,cut
 # python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise,cut
+
+
 
 # python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard
 # python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 5,noise,cut
@@ -122,3 +129,17 @@
 sh ./inferencia_svm.sh inferencia/base inferencia/base/inferencia_svm_15noise.csv
 sh ./inferencia_cnn.sh inferencia/base inferencia/base/inferencia_cnn_15noisecut.csv
 sh ./inferencia_perceptron.sh inferencia/base inferencia/base/inferencia_perceptron_15noisecut.csv
+# python3 trainmodel_svm.py -l portuguese -r psf -n standard -a 15,noise,cut
+
+
+python3 svm.py -l portuguese -r melbanks -n standard -a 15,noise
+python3 svm.py -l portuguese -r psf -n standard -a 15,noise
+
+python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise
+python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 15,noise
+
+python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise
+python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 15,noise
+
+python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise
+python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise

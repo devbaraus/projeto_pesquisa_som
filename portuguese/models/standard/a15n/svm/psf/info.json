@@ -5,8 +5,7 @@
   "seed": 42,
   "augmentation": [
     "15",
-    "noise",
-    "cut"
+    "noise"
   ],
   "library": "psf",
   "sample_rate": 24000,
@@ -14,7 +13,7 @@
     11776,
     3042
   ],
-  "timestamp": 1631216520.8504956,
+  "timestamp": 1631216440.010789,
   "params": null,
   "mapping": [
     "98",
