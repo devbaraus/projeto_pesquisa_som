@@ -1,8 +1,14 @@
 #!/bin/bash
+# $1 = nome da pasta
+# $2 = nome do csv
+# $3 = representacao
+# $3 = normalizacao
+# $4 = augmentation
+
 echo "arquivo, memoria (KB), tempo (m:s), confiança, predito" >> $2
 
 for i in $1/*.wav; do
-  /usr/bin/time -v python3 inferencia_perceptron.py -l portuguese -r psf -n standard -a 15,noise,cut -i "$i" 2>&1 | tee temp_inf.txt
+  /usr/bin/time -v python3 inferencia_perceptron.py -l portuguese -r $3 -n $4 -a $5 -i "$i" 2>&1 | tee temp_inf.txt
   wait < /dev/tty
   mem=$(cat temp_inf.txt | grep "Maximum resident set size (kbytes):" | cut -d " " -f 6)
   elapsed=$(cat temp_inf.txt | grep "Elapsed (wall clock) time (h:mm:ss or m:ss):" | cut -d " " -f 8)
