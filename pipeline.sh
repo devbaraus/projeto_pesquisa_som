@@ -4,10 +4,16 @@
 # python3 process.py -l portuguese -r psf
 <<<<<<< HEAD
 # python3 process.py -l portuguese -r psf -a 15,noise
+<<<<<<< HEAD
 python3 process.py -l portuguese -r melbanks -a 15,noise
 =======
 <<<<<<< HEAD
 # python3 process.py -l portuguese -r psf -a 15,noise
+=======
+python3 process.py -l portuguese -r psf -a 15,noise
+>>>>>>> aa1efe7aa1714a2a8fbb415d171b27efa3750bb2
+>>>>>>> 290e07d07d450baeed33199c0cfc65d7a4ff194d
+=======
 =======
 python3 process.py -l portuguese -r psf -a 15,noise
 >>>>>>> aa1efe7aa1714a2a8fbb415d171b27efa3750bb2
@@ -148,7 +154,11 @@ python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise
 
 python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise
 <<<<<<< HEAD
+<<<<<<< HEAD
 # python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
+=======
+python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
+>>>>>>> 290e07d07d450baeed33199c0cfc65d7a4ff194d
 =======
 python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
 >>>>>>> 290e07d07d450baeed33199c0cfc65d7a4ff194d
