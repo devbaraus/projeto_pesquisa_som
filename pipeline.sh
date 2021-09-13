@@ -112,53 +112,25 @@ python3 process.py -l portuguese -r psf -a 15,noise
 # python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise,cut
 
 
-# python3 trainmodel.py -m cnn -l portuguese -r psf -n standard -a 15,noise,cut
-# python3 trainmodel.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise,cut
-# python3 trainmodel.py -m perceptron -l portuguese -r psf -n standard -a 15,noise,cut
-# python3 trainmodel.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise,cut
-# python3 trainmodel.py -m svm -l portuguese -r psf -n standard -a 15,noise,cut
-# python3 trainmodel.py -m svm -l portuguese -r melbanks -n standard -a 15,noise,cut
+python3 trainmodel_nn.py -m cnn -l portuguese -r psf -n standard -a 15,noise
+python3 trainmodel_nn.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise
+python3 trainmodel_nn.py -m perceptron -l portuguese -r psf -n standard -a 15,noise
+python3 trainmodel_nn.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise
+python3 trainmodel_nn.py -m lstm -l portuguese -r psf -n standard -a 15,noise
+python3 trainmodel_nn.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise
+python3 trainmodel_svm.py -l portuguese -r psf -n standard -a 15,noise
+python3 trainmodel_svm.py -l portuguese -r melbanks -n standard -a 15,noise
 
-# python3 process.py -l portuguese -r psf -a 20,noise,cut
-# python3 process.py -l portuguese -r melbanks -a 20,noise,cut
+sh ./inferencia_svm.sh inferencia/pessoas inferencia/pessoas/inferencia_svm_psf_15noise.csv psf standard 15,noise
+sh ./inferencia_cnn.sh inferencia/pessoas inferencia/pessoas/inferencia_cnn_psf_15noise.csv psf standard 15,noise
+sh ./inferencia_perceptron.sh inferencia/pessoas inferencia/pessoas/inferencia_perceptron_psf_15noise.csv psf standard 15,noise
+sh ./inferencia_svm.sh inferencia/base inferencia/base/inferencia_svm_psf_15noise.csv psf standard 15,noise
+sh ./inferencia_cnn.sh inferencia/base inferencia/base/inferencia_cnn_psf_15noise.csv psf standard 15,noise
+sh ./inferencia_perceptron.sh inferencia/base inferencia/base/inferencia_perceptron_psf_15noise.csv psf standard 15,noise
 
-# python3 svm.py -l portuguese -r psf -n standard -a 20,noise,cut
-# python3 svm.py -l portuguese -r melbanks -n standard -a 15,noise,cut
-# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 20,noise,cut
-# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 20,noise,cut
-# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 20,noise,cut
-# python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 20,noise,cut
-# python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 20,noise,cut
-# python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 20,noise,cut
-
-# python3 trainmodel_svm.py -l portuguese -r psf -n standard -a 15,noise
-
-# sh ./inferencia_svm.sh inferencia/pessoas inferencia/pessoas/inferencia_svm_15noise.csv
-# sh ./inferencia_cnn.sh inferencia/pessoas inferencia/pessoas/inferencia_cnn_15noisecut.csv
-# sh ./inferencia_perceptron.sh inferencia/pessoas inferencia/pessoas/inferencia_perceptron_15noisecut.csv
-
-sh ./inferencia_svm.sh inferencia/base inferencia/base/inferencia_svm_15noise.csv
-sh ./inferencia_cnn.sh inferencia/base inferencia/base/inferencia_cnn_15noisecut.csv
-sh ./inferencia_perceptron.sh inferencia/base inferencia/base/inferencia_perceptron_15noisecut.csv
-# python3 trainmodel_svm.py -l portuguese -r psf -n standard -a 15,noise,cut
-
-
-python3 svm.py -l portuguese -r melbanks -n standard -a 15,noise
-# python3 svm.py -l portuguese -r psf -n standard -a 15,noise
-
-python3 deepgrid.py -m perceptron -l portuguese -r melbanks -n standard -a 15,noise
-# python3 deepgrid.py -m perceptron -l portuguese -r psf -n standard -a 15,noise
-
-python3 deepgrid.py -m cnn -l portuguese -r melbanks -n standard -a 15,noise
-# python3 deepgrid.py -m cnn -l portuguese -r psf -n standard -a 15,noise
-
-python3 deepgrid.py -m lstm -l portuguese -r melbanks -n standard -a 15,noise
-<<<<<<< HEAD
-<<<<<<< HEAD
-# python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
-=======
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
->>>>>>> 290e07d07d450baeed33199c0cfc65d7a4ff194d
-=======
-python3 deepgrid.py -m lstm -l portuguese -r psf -n standard -a 15,noise
->>>>>>> 290e07d07d450baeed33199c0cfc65d7a4ff194d
+sh ./inferencia_svm.sh inferencia/pessoas inferencia/pessoas/inferencia_svm_melbanks_15noise.csv melbanks standard 15,noise
+sh ./inferencia_cnn.sh inferencia/pessoas inferencia/pessoas/inferencia_cnn_melbanks_15noise.csv melbanks standard 15,noise
+sh ./inferencia_perceptron.sh inferencia/pessoas inferencia/pessoas/inferencia_perceptron_melbanks_15noise.csv melbanks standard 15,noise
+sh ./inferencia_svm.sh inferencia/base inferencia/base/inferencia_svm_melbanks_15noise.csv melbanks standard 15,noise
+sh ./inferencia_cnn.sh inferencia/base inferencia/base/inferencia_cnn_melbanks_15noise.csv melbanks standard 15,noise
+sh ./inferencia_perceptron.sh inferencia/base inferencia/base/inferencia_perceptron_melbanks_15noise.csv melbanks standard 15,noise
